@@ -1,0 +1,63 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<%if(live==true){%>
+  <h1>Live Meetings <a href="/live">(Scheduled)</a></h1>
+  <%}else{%>
+<h1>Scheduled Meetings <a href="/">(Live)</a></h1>
+    <%}%>
+
+Welcome, <%=display_name%> (<%=full_name%>)  
+  
+  
+  <%=email%>
+     <table>
+     <tr>
+    
+    <th>Topic</th>
+    <th>ID</th>
+    <th>Duration</th>
+    <th>Join</th>
+    <th>Start Time</th>
+    <th>Created</th>
+  </tr>
+     <%for(i=0;i<meetings.length;i++){%>
+      
+ 
+  <tr>
+    
+    
+ <td><%=meetings[i].topic%></td>
+    <td>ID: <%=meetings[i].id%></td>
+      <%a.push(meetings[i].id)%>
+ <td><%=meetings[i].duration%> minutes</td>
+     <td><a href=" <%=meetings[i].join_url%>">Join</a></td>
+       <td><%=new Date(meetings[i].start_time.split("T")[0]).toDateString()%></td>
+       <td><%=new Date(meetings[i].created_at).toDateString()%></td>
+      </tr>
+  
+
+ 
+    <%}%>
+</table>
+      <script>alert("Paul, unfortunately I am unable to show a list of participants due to one requiring a business level plan ($250/yr)");
+      
+     
+
+        
+     
+      </script>
